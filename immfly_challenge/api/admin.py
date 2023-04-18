@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Channel, Content, File, Metadata
 
-# Register your models here.
+admin.site.register(Channel)
+admin.site.register(Content)
+admin.site.register(File)
+admin.site.register(Metadata)
