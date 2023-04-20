@@ -9,6 +9,7 @@ class Channel(models.Model):
 class Content(models.Model):
     name = models.CharField(max_length=100)
     channel = models.ForeignKey(Channel, on_delete=models.CASCADE, related_name="content")
+    rating = models.FloatField(default=0)
 
 class File(models.Model):
     type = models.CharField(max_length=100)
