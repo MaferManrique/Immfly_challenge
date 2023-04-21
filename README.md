@@ -37,6 +37,10 @@ To get a .csv file with all the channels a their rating average, you only need t
 
 With this command you gonna have a .csv file on your project root
 
+# Run test
+To test the calculated average command run test from django:
+```python3 manage.py test```
+
 # Models
 ## Channels
 Considering that a channel has a hierarchical structure in the form of a tree, and each channel can have subchannels that in turn are channels, I decided to create a single channel model that saves a reference to its parent in case it has one. If a channel does not have a parent channel (parent_channel=None), then it is one of the parent channels
