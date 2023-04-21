@@ -13,8 +13,7 @@ Create your own virtual environment and make sure to install django and django r
 
 Make sure to run all the migrations and seed the database with testing data
 
-```python3 manage.py migrate &&
-python3 manage.py seed```
+```python3 manage.py migrate && python3 manage.py seed```
 
 Finally, run the project
 
