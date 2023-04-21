@@ -8,9 +8,13 @@ def get_rating(channel: Channel, channel_averages: tuple[str, float]) :
     if subchannels:
         subchannels_ratings = [get_rating(subchannel, channel_averages) for subchannel in subchannels]
         subchannel_ratings_without_none = [rating for rating in subchannels_ratings if rating is not None]
-        subchannel_average = sum(subchannel_ratings_without_none)/ len(subchannel_ratings_without_none)
-        channel_averages.append((channel.title, subchannel_average))
-        return subchannel_average
+        if len(subchannel_ratings_without_none) == 0:
+            channel_averages.append((channel.title, None))
+            return None
+        else:
+            subchannel_average = sum(subchannel_ratings_without_none)/ len(subchannel_ratings_without_none)
+            channel_averages.append((channel.title, subchannel_average))
+            return subchannel_average
     else:
         content_ratings = channel.content.values_list("rating", flat=True)
         if content_ratings:
@@ -40,4 +44,7 @@ class Command(BaseCommand):
 
             for channel_average in sorted_average:
                 writer.writerow(channel_average)
+        
+        self.stdout.write("File with average created at channel_average.csv")
+
 

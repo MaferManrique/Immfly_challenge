@@ -1,3 +1,6 @@
 env
 db.sqlite3
 channel_average.csv
+immfly_challenge/__pycache__
+immfly_challenge/api/__pycache__
+immfly_challenge/api/migrations/__pycache__
