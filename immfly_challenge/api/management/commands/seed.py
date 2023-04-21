@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from immfly_challenge.api.models import Channel, Content
+from immfly_challenge.api.models import Channel, Group
 from random import choice, uniform
 
 DESCRIPTION_PLACEHOLDER = "This is a placeholder description for a content of this project"
@@ -37,16 +37,27 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         #Delete all data
         Channel.objects.all().delete()
+        Group.objects.all().delete()
+
         
         #we create new test data
         main_channels_title = ["Drama", "Romance", "Sports", "Action", "Kdrama"]
         for channel in main_channels_title:
+            # we create a test group
+            group = Group(name = "test_group")
+            group.save()
             new_channel = create_channel(channel)
+            group.channels.add(new_channel)
+            group.save()
             new_subchannel_titles = ["Last Dance", "Matilda", "Pasapalabra"]
             for subchannel_title in new_subchannel_titles:
                 subchannel = create_subchannel(new_channel, subchannel_title)
+                group.channels.add(subchannel)
+                group.save()
                 create_content(subchannel)
         self.stdout.write("Seed data succesfully created")
+
+
 
 
 

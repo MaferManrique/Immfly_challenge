@@ -21,10 +21,11 @@ class ContentSerializer(serializers.ModelSerializer):
 class ChannelSerializer(serializers.HyperlinkedModelSerializer):
     subchannels = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name="channel-detail")
     content = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name="content-detail")
+    groups = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
 
     class Meta:
         model = Channel
-        fields = ("title", "picture", "language", "subchannels", "content")
+        fields = ("title", "picture", "language", "subchannels", "content", "groups")
 
 
 

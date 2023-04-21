@@ -50,6 +50,9 @@ Considering also that a content has an arbitrary amount of metadata, I also deci
 ## `/api/channels`
 This endpoint returns a list of then main channels and their subchannels,  to access a subchannel I decide to use HyperLinked, i did this thinking on performance, since in this way the entire channel hierarchy is not returned, but it can be obtained dynamically.
 
+### Filtering by group
+You can use this endpoint also with filtering, if you add to the end the query param `?group={id}` returns all the filter channels
+
 ## `/api/channels/{id}`
 This endpoint returns the detail info about a channel, using HyperLikend.
 

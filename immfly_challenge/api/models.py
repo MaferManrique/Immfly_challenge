@@ -21,3 +21,6 @@ class Metadata(models.Model):
     value = models.CharField(max_length=100)
     content = models.ForeignKey(Content, on_delete=models.CASCADE, related_name="metadata")
 
+class Group(models.Model):
+    name = models.CharField(max_length=100)
+    channels = models.ManyToManyField(Channel, related_name="groups")
